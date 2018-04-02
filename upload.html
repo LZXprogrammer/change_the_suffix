@@ -8,62 +8,68 @@
         <link rel="stylesheet" href="/assets/css/amazeui.min.css">
     </head>
     <body>
-        <form action="">
 
         <section class="am-panel am-panel-default">
             <header class="am-panel-hd">
                 <h3 class="am-panel-title">更改文件后缀</h3>
             </header>
             <div class="am-panel-bd">
-                <div class="am-g am-g-fixed">
-                    <div class="am-u-sm-6 am-u-md-4 am-u-lg-3">
-                        <label for="">上传文件：</label>
-                    </div>
-                    <div class="am-u-sm-6 am-u-md-8 am-u-lg-9">
-                        <div class="am-form-group am-form-file">
-
-                            <button type="button" class="am-btn am-btn-danger am-btn-sm">
-                                <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
-                            <input id="doc-form-file" type="file" multiple>
+                <form class="am-form am-form-horizontal" action="javascript:void(0)">
+                    <div class="am-form-group">
+                        <label for="filenames" class="am-u-sm-2 am-form-label">文件名</label>
+                        <div class="am-u-sm-10">
+                        <input type="text" name="filenames" id="filenames" placeholder="输入文件名，可多个，用英文逗号隔开">
                         </div>
-                        <div id="file-list"></div>
                     </div>
-                </div>
 
-            </div>
-            <div class="am-panel-bd">
-                <div class="am-g am-g-fixed">
-                    <div class="am-u-sm-6 am-u-md-4 am-u-lg-3">
-                        <label for="">后缀名：</label>
+                    <div class="am-form-group">
+                        <label for="suffixname" class="am-u-sm-2 am-form-label">后缀名</label>
+                        <div class="am-u-sm-10">
+                        <input type="text" name="suffixname" id="suffixname" placeholder="比如：data">
+                        </div>
                     </div>
-                    <div class="am-u-sm-6 am-u-md-8 am-u-lg-9">
-                        <label class="am-radio-inline">
-                            <input type="radio" name="radio10" value="male" data-am-ucheck> data
-                        </label>
-                        <label class="am-radio-inline">
-                            <input type="radio" name="radio10" value="female" data-am-ucheck> png
-                        </label>
-                        <label class="am-radio-inline">
-                            <input type="radio" name="radio10" value="pig" data-am-ucheck> jpg
-                        </label>
-                        <label class="am-radio-inline">
-                            <input type="radio" name="radio10" value="pig" data-am-ucheck>
-                        </label>
+
+                    <div class="am-form-group">
+                        <div class="am-u-sm-10 am-u-sm-offset-2">
+                            <button id="submit" class="am-btn am-btn-default">更改</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </section>
-        </form>
+
     </body>
     <script>
-        $(function() {
-            $('#doc-form-file').on('change', function() {
-                var fileNames = '';
-                $.each(this.files, function() {
-                    fileNames += '<span class="am-badge">' + this.name + '</span> ';
-                });
-                $('#file-list').html(fileNames);
-            });
-        });
+        var filenames  = $('#filenames');
+        var suffixname = $('#suffixname');
+        var form = $('#submit');
+        form.click(function(){
+            if (filenames.val() == '') {
+                alert('文件名不能为空');
+                filenames.focus();
+                return false;
+            } else if(suffixname.val() == '') {
+                alert('后缀名不能为空');
+                suffixname.focus();
+                return false;
+            }
+
+            $.ajax({
+                type: "get",
+                url: "./updatesuffix.php",
+                data: {
+                    'filenames': filenames.val(),
+                    'suffixname': suffixname.val()
+                },
+                success: function(data){
+                    console.log(data);
+                },
+                error: function(){
+                    alert('fuck');
+                }
+            })
+        })
+
     </script>
+
 </html>
