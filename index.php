@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <script type="text/javascript" src="./public/jquery-3.2.1/jquery-3.2.1.min.js"></script>
-    <link rel="stylesheet" href="./public/css/index.css">
+    <script type="text/javascript" src="/public/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="/public/css/index.css">
   </head>
   <body>
     <div class="nav_body">
@@ -18,7 +18,8 @@
                     <span>新后缀名: </span>
                 </div>
                 <div class="nav_right">
-                    <textarea id="filenames" name="filenames" placeholder="example: qwe,asd,zxc" rows="7" cols="40"></textarea><br><br><br>
+                    <!-- <textarea id="filenames" name="filenames" placeholder="example: qwe,asd,zxc" rows="7" cols="40"></textarea><br><br><br> -->
+                    <input type="file" multiple="multiple" />
                     <input type="text" id="suffix" name="suffix" placeholder="example: data" value="">
                 </div>
                 <div class="nav_tijiao">

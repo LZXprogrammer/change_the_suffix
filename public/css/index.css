@@ -44,4 +44,23 @@ span{
     height: 260px;
     float: right;
     line-height: 30px;
+    margin-right:100px;
+}
+.nav_tijiao{
+    border: 1px solid yellow;
+    width: 200px;
+    height: 50px;
+    float: right;
+    margin-top: 200px;
+    box-shadow: 10px 10px rgb(121, 56, 98);
+}
+.nav_tijiao > button{
+    border: 3px solid rgb(251, 255, 0);
+    width: 200px;
+    height: 50px;
+    background-color: rgb(121, 56, 98);
+    color: rgb(255, 255, 255);
+    letter-spacing: 50px;
+    text-align: center;
+    padding-left: 50px;
 }
