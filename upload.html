@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="/public/jquery-3.2.1/jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="/assets/js/amazeui.min.js"></script>
+        <link rel="stylesheet" href="/assets/css/amazeui.min.css">
+    </head>
+    <body>
+        <form action="">
+
+        <section class="am-panel am-panel-default">
+            <header class="am-panel-hd">
+                <h3 class="am-panel-title">更改文件后缀</h3>
+            </header>
+            <div class="am-panel-bd">
+                <div class="am-g am-g-fixed">
+                    <div class="am-u-sm-6 am-u-md-4 am-u-lg-3">
+                        <label for="">上传文件：</label>
+                    </div>
+                    <div class="am-u-sm-6 am-u-md-8 am-u-lg-9">
+                        <div class="am-form-group am-form-file">
+
+                            <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                                <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
+                            <input id="doc-form-file" type="file" multiple>
+                        </div>
+                        <div id="file-list"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="am-panel-bd">
+                <div class="am-g am-g-fixed">
+                    <div class="am-u-sm-6 am-u-md-4 am-u-lg-3">
+                        <label for="">后缀名：</label>
+                    </div>
+                    <div class="am-u-sm-6 am-u-md-8 am-u-lg-9">
+                        <label class="am-radio-inline">
+                            <input type="radio" name="radio10" value="male" data-am-ucheck> data
+                        </label>
+                        <label class="am-radio-inline">
+                            <input type="radio" name="radio10" value="female" data-am-ucheck> png
+                        </label>
+                        <label class="am-radio-inline">
+                            <input type="radio" name="radio10" value="pig" data-am-ucheck> jpg
+                        </label>
+                        <label class="am-radio-inline">
+                            <input type="radio" name="radio10" value="pig" data-am-ucheck>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </form>
+    </body>
+    <script>
+        $(function() {
+            $('#doc-form-file').on('change', function() {
+                var fileNames = '';
+                $.each(this.files, function() {
+                    fileNames += '<span class="am-badge">' + this.name + '</span> ';
+                });
+                $('#file-list').html(fileNames);
+            });
+        });
+    </script>
+</html>
